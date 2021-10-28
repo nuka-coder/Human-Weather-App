@@ -1,15 +1,15 @@
-/* Color Styling */
+/* Global Styling */
 body {
 background-color: rgb(16, 14, 29);
 font-family: Oswald;
 font-size: 1rem;
 }
 button {
-  /* padding: 10px 20px; */
   background-color: dimgray;
   border: none;
   color: white;
   font-family: Montserrat, sans-serif !important;
+  font-weight: bold;
 }
 button:hover {
   background-color: white;
@@ -24,15 +24,21 @@ text-align: center;
 }
 h2, h3 {
 color: white;
-font-family: Glacial Indifference, sans-serif !important;
-padding-left: 30px;
+font-family: Roboto, sans-serif !important;
+padding-left: 40px;
 text-align: left !important;
 }
 img {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
 }
-/* Buttons */
+                /* All Body Content Section */
+.all-body-content {
+  display: flex;
+}
+
+               /* ----- Buttons ----- */
+/* Temperature Units Buttons  */
 #degrees-buttons-container {
   background-color: inherit;
   padding-top: 0;
@@ -45,100 +51,97 @@ img {
   padding: 0;
   height: 30px;
   width: 30px;
-
 }
-/* All Body Content */
-.all-body-content {
-  display: flex;
-
-}
-
-                        /* GPS Location Button */
-.gps-location-section {
-  display: block;
-}
-                    /* Side Panel 1 */
-.sidepanel-1 {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidepanel-1 img {
-  height: 200px;
-  width: 200px;
-}
-/* div for current weather in sidepanel */
-.current-weather-data-container {
-  background-size: 100px 100px;
-  /* background-image: url(imgs/cloud.png); */
-  background-repeat: repeat;
-  text-align: center;
-}
-.weather-icon {
-  margin: 10% 0;
-}
-.current-temperature {
-  font-size: 3rem;
-}
-.current-weather-description {
-  font-size: 1.5rem;
-}
-/* div for search button in sidepanel */
+/* Search and GPS Button */
 .searchCities-gpsBtn-container {
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 0 !important;
 }
-/* gps button */
+/* GPS Location Button */
 #gps-location-btn {
   border-radius: 100%;
   padding: 10px 15px;
 }
-.search-gps-icon {
+.gps-location-section {
+  display: block;
+}
+.gps-icon {
   font-size: 1.25rem;
 }
-.sidepanel-1-hidden {
-  display: none;
-}
-.sidepanel-1-footer-container {
-  height: 100vh;
-}
-.sidepanel-1-footer {
-  padding-top: ;
-}
-.display-search-slide-btn {
+/* Open Search Field Button */
+.open-searchBar-btn {
   padding: 10px 20px  !important;
   background-color: dimgray;
   border: none;
   color: white;
   margin-right: 50px;
 }
+/* Exit Search Field Button */
+.exit-btn-div,
+.exit-btn {
+  text-align: right;
+}
 
-/* Current Weather Section */
+
+
+/* ----- Sidepanel-1 (Current Weather Data) ----- */
+.sidepanel-1-section {
+  display: flex;
+  flex-direction: column;
+}
+.current-weather-data-container {
+  background-size: 100px 100px;
+  /* background-image: url(imgs/cloud.png); */
+  background-repeat: repeat;
+  text-align: center;
+}
+.current-weather-icon {
+  height: 200px !important;
+  width: 200px !important;
+  margin: 0;
+}
+.current-temperature {
+  font-size: 3rem;
+  margin: 0 !important;
+}
+.current-weather-description {
+  font-size: 1.5rem;
+}
 .location {
   font-size: 1.5rem;
 }
+.sidepanel-1-footer-container {
+  height: 100vh;
+}
+/* toggling this selector in JS */
+.sidepanel-1-hidden {
+  display: none;
+}
+/* ----- End ----- */
 
-/* City Search Slide (Sidepanel 2) */
+
+/* ----- Sidepanel-2 (City Search Field) ----- */
+
+/* toggling this selector in JS */
 .sidepanel-2-hidden {
   display: none;
 }
 .sidepanel-2-visible {
   margin: 20px 0;
 }
-.exit-btn-div {
-  text-align: right;
-}
 .sidepanel-2-bottom {
   height: 100vh;
 }
 
-
-              /* 3 Hour Forecast/Highlights Container */
+              /* ----- 3 Hour Forecast/Highlights ----- */
 .main-forecast-section div {
   border-radius: 20px;
+  margin: 10px;
 }
+
+/* 3 Hour Forecast */
 .three-hour-forecast-section {
   background-color: inherit;
   display: flex;
@@ -147,10 +150,6 @@ img {
   margin: 20px;
 }
 
-/* 3 Hour Forecast */
-.three-hour-forecast-section div {
-  margin: 10px;
-}
 .three-hour-forecast-section div p {
   color: silver;
   display: inline-block;
@@ -163,7 +162,6 @@ img {
   flex-direction: column;
 }
 .highlights-section div {
-  margin: 10px;
   padding: 0 20px;
   width: 300px;
 }
@@ -179,22 +177,15 @@ img {
   justify-content: space-between;
   margin: 0 30px;
 }
-.btm-row-highlights {
-
-}
 
 
-/* All Styling for Autocomplete Search Bar */
-
-.exit-btn {
-  text-align: right;
-}
+/* All Styling for Autocomplete City Search Bar */
 
 * {
   box-sizing: border-box;
 }
 
-/*(This is the container of the search input field) the container must be positioned relative:*/
+/*(This is the container of the search input field) positioned relative is important*/
 .autocomplete {
   position: relative;
   display: inline-block;
@@ -202,7 +193,7 @@ img {
 
 input {
   border: 1px solid transparent;
-  background-color: red;
+  background-color: lightgray;
   color: navy;
   padding: 10px;
   font-size: 16px;
@@ -227,7 +218,7 @@ button[type=submit] {
   border-bottom: none;
   border-top: none;
   z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
+  /*autocomplete items positioned to be the same width as the container:*/
   top: 100%;
   left: 0;
   right: 0;

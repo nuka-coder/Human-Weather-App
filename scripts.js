@@ -1,6 +1,6 @@
 
 //Display search slide
-$("#display-search-slide-btn").on("click", function(){
+$("#open-searchBar-btn").on("click", function(){
   // document.querySelector("button").style.color="red";
   $("#city-search-feature").removeClass("sidepanel-2-hidden").addClass("sidepanel-2-visible");
   $(".sidepanel-1").addClass("sidepanel-1-hidden");
@@ -33,7 +33,7 @@ function noCoordsAllowedWeather(){
     console.log("No coords allowed, default city.");
     //Appending weather image from API to HTML img src
     const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
-    $(".weather-icon").attr("src", weatherIcon);
+    $(".current-weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
     $(".current-temperature").html(temperature);
@@ -79,7 +79,7 @@ $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=
   console.log("Custom city searched.");
   //Appending weather image from API to HTML img src
   const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
-  $(".weather-icon").attr("src", weatherIcon);
+  $(".current-weather-icon").attr("src", weatherIcon);
   //Appending weather temperature from API to HTML p tag
   const temperature = data.main.temp;
   $(".current-temperature").html(temperature);
@@ -123,7 +123,7 @@ function coordsAllowedWeather({latitude, longitude}){
     console.log("Coords allowed, custom city");
     //Appending weather image from API to HTML img src
     const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
-    $(".weather-icon").attr("src", weatherIcon);
+    $(".current-weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
     $(".current-temperature").html(temperature);
