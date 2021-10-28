@@ -1,0 +1,253 @@
+/* Color Styling */
+body {
+background-color: rgb(16, 14, 29);
+font-family: Oswald;
+font-size: 1rem;
+}
+button {
+  /* padding: 10px 20px; */
+  background-color: dimgray;
+  border: none;
+  color: white;
+  font-family: Montserrat, sans-serif !important;
+}
+button:hover {
+  background-color: white;
+  color: rgb(30, 33, 58);
+  cursor: pointer;
+}
+div {
+background-color: rgb(30, 33, 58);
+color: white;
+padding: 20px;
+text-align: center;
+}
+h2, h3 {
+color: white;
+font-family: Glacial Indifference, sans-serif !important;
+padding-left: 30px;
+text-align: left !important;
+}
+img {
+  height: 80px;
+  width: 80px;
+}
+/* Buttons */
+#degrees-buttons-container {
+  background-color: inherit;
+  padding-top: 0;
+  text-align: right;
+}
+#degrees-buttons-container button {
+  border-radius: 100%;
+  border-style: none;
+  margin-top: 20px;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+
+}
+/* All Body Content */
+.all-body-content {
+  display: flex;
+
+}
+
+/* Client Location Button */
+.client-location-section {
+  display: block;
+}
+                    /* Side Panel 1 */
+.sidepanel-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidepanel-1 img {
+  height: 200px;
+  width: 200px;
+}
+/* div for current weather in sidepanel */
+.current-weather-div {
+  background-size: 100px 100px;
+  /* background-image: url(imgs/cloud.png); */
+  background-repeat: repeat;
+  text-align: center;
+}
+.weather-icon {
+  margin: 10% 0;
+}
+.temp {
+  font-size: 3rem;
+}
+.weather-description {
+  font-size: 1.5rem;
+}
+/* div for search button in sidepanel */
+.search-div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 !important;
+}
+/* gps button */
+#client-location-btn {
+  border-radius: 100%;
+  padding: 10px 15px;
+}
+.search-gps-icon {
+  font-size: 1.25rem;
+}
+.sidepanel-1-hidden {
+  display: none;
+}
+.sidepanel-1-footer-div {
+  height: 100vh;
+}
+.sidepanel-1-footer {
+  padding-top: ;
+}
+.search-btn-1 {
+  padding: 10px 20px  !important;
+  background-color: dimgray;
+  border: none;
+  color: white;
+  margin-right: 50px;
+}
+
+/* Current Weather Section */
+.location {
+  font-size: 1.5rem;
+}
+
+/* City Search Slide (Sidepanel 2) */
+.sidepanel-2-hidden {
+  display: none;
+}
+.sidepanel-2-visible {
+  margin: 20px 0;
+}
+.exit-btn-div {
+  text-align: right;
+}
+.sidepanel-2-bottom {
+  height: 100vh;
+}
+
+
+              /* 3 Hour Forecast/Highlights Container */
+.main-forecast-section div {
+  border-radius: 20px;
+}
+.three-hour-forecast-section {
+  background-color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+/* 3 Hour Forecast */
+.three-hour-forecast-section div {
+  margin: 10px;
+}
+.three-hour-forecast-section div p {
+  color: silver;
+  display: inline-block;
+}
+
+
+/* Today's Highlights */
+.highlights-section {
+  display: flex;
+  flex-direction: column;
+}
+.highlights-section div {
+  margin: 10px;
+  padding: 0 20px;
+  width: 300px;
+}
+.highlights-section span {
+  font-size: 3rem;
+}
+.highlights-section p {
+  font-size: 1.5rem;
+}
+.top-row-highlights,
+.btm-row-highlights {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+.btm-row-highlights {
+
+}
+
+
+/* All Styling for Autocomplete Search Bar */
+
+.exit-btn {
+  text-align: right;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*(This is the container of the search input field) the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: red;
+  color: navy;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: white;
+  width: 100%;
+}
+
+/* Search button in Sidepanel-2 */
+button[type=submit] {
+  background-color: lightgray;
+  color: #000;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  color: navy;
+  background-color: white;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering a city in the search bar:*/
+.autocomplete-items div:hover {
+  background-color: AliceBlue;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: AliceBlue; !important;
+  color: #000;
+}

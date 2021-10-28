@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Awesome Weather App</title>
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <!-- JQuery Script -->
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Javascript Script -->
+  <script defer src="scripts.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+  <section class="all-body-content">
+
+<!-- Sidepanel-1 Current Weather -->
+    <section class="sidepanel-1">
+      <div class="weather-info-container">
+        <div class="search-div">
+        <div>
+          <label for="search-button"></label>
+          <button id="display-search-slide" class="search-btn-1" type="button" name="search-button">Search for cities
+          </button>
+        </div>
+          <!-- client gps button -->
+          <section class="client-location-section">
+            <div class="client-location">
+              <button id="client-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt search-gps-icon"></i></button>
+            </div>
+          </section>
+        </div>
+    <div class="current-weather-div">
+      <img class="weather-icon" src="" alt="weather image icon">
+      <p class="temp"></p>
+      <p class="weather-description"></p>
+      <p class="today-date">Today | <span id="current-date"></span></p>
+    </div>
+      </div>
+      <div class="sidepanel-1-footer-div">
+        <footer class="sidepanel-1-footer">
+          <p class="location"></p>
+          <i class="fas fa-map-marker-alt"></i>
+        </footer>
+      </div>
+    </section>
+
+    <!-- Sidepanel-2 City Search Bar -->
+      <section id="city-search-feature" class="sidepanel-2-hidden">
+        <form id="searchForm" autocomplete="off" action="/" method="get">
+          <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
+          <div class="autocomplete" style="width:300px;">
+            <input id="searchInput" type="text" name="myCity" placeholder= "&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome" />
+          </div>
+      <div class="sidepanel-2-bottom">
+            <button type="submit" name="submit" class="search-submit-btn">Search</button>
+      </div>
+        </form>
+
+      </section>
+
+
+  <!-- <section class="sidepanel-search-menu">
+  <form id="search-form" autocomplete="off" action="/" method="get">
+    <div><button type="button" name="exit-btn" class="exit-btn">X</button></div>
+    <div class="search-menu">
+      <label for="search-location" class="search-location"></label>
+      <input id="search-input" type="text" class="search-input" name="search-input" placeholder="search locations...">
+      <button type="submit" name="submit" class="search-submit-btn">Search</button>
+    </div>
+  </form>
+  </section> -->
+
+    <section class="main-forecast-section">
+
+      <div id="degrees-buttons-container">
+        <button type="button" name="celsius-button">C</button>
+        <button type="button" name="farenheit-button">F</button>
+      </div>
+
+      <h2 class="three-hour-heading">3 Hour Forecast</h2>
+      <h3 class="city-title"></h3>
+      <section class="three-hour-forecast-section">
+
+        <div class="day1-forecast">
+          <h4 class="forecast-titles-0"></h4>
+          <img class="weather-icon-0" src="" alt="Tomorrow weather icon">
+          <h4 class="3-hour-weather-description-0"></h4>
+          <p class="high-temp-0"></p>
+          <p class="min-temp-0"></p>
+        </div>
+
+        <div class="day2-forecast">
+          <h4 class="forecast-titles-1"></h4>
+          <img class="weather-icon-1" src="" alt="weather icon">
+          <h4 class="3-hour-weather-description-1"></h4>
+          <p class="high-temp-1"></p>
+          <p class="min-temp-1"></p>
+        </div>
+
+        <div class="day3-forecast">
+          <h4 class="forecast-titles-2"></h4>
+          <img class="weather-icon-2" src="" alt="weather icon">
+          <h4 class="3-hour-weather-description-2"></h4>
+          <p class="high-temp-2"></p>
+          <p class="min-temp-2"></p>
+        </div>
+
+        <div class="day4-forecast">
+          <h4 class="forecast-titles-3"></h4>
+          <img class="weather-icon-3" src="" alt="weather icon">
+          <h4 class="3-hour-weather-description-3"></h4>
+          <p class="high-temp-3"></p>
+          <p class="min-temp-3"></p>
+        </div>
+
+        <div class="day5-forecast">
+          <h4 class="forecast-titles-4"></h4>
+          <img class="weather-icon-4" src="" alt="weather icon">
+          <h4 class="3-hour-weather-description-4"></h4>
+          <p class="high-temp-4"></p>
+          <p class="min-temp-4"></p>
+        </div>
+
+      </section>
+
+      <h2 class="highlights-heading">Today's Highlights</h2>
+      <section class="highlights-section">
+      <section class="top-row-highlights">
+        <div>
+          <h5>Wind Status</h5>
+          <p><span class="wind-speed"></span>mph</p>
+        </div>
+        <div>
+          <h5>Humidity</h5>
+          <p><span class="humidity"></span>%</p>
+        </div>
+      </section>
+      <section class="btm-row-highlights">
+        <div>
+          <h5>Visibility</h5>
+          <p><span class="visibility"></span>miles</p>
+        </div>
+        <div>
+          <h5>Air Pressure</h5>
+          <p><span class="air-pressure"></span>mb</p>
+        </div>
+      </section>
+      </section>
+
+    </section>
+
+  </section>
+
+</body>
+
+</html>
