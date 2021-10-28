@@ -19,31 +19,34 @@
 <body>
 
   <section class="all-body-content">
-
+<!-- There are 2 sidepanels. The first is default visible, and the second becomes visible onclick of "Search for cities button" -->
 <!-- Sidepanel-1 Current Weather -->
     <section class="sidepanel-1">
-      <div class="weather-info-container">
-        <div class="search-div">
+      <div>
+        <div class="searchCities-gpsBtn-container">
+        <!-- "Search for cities" sidepanel 1 button -->
         <div>
           <label for="search-button"></label>
-          <button id="display-search-slide" class="search-btn-1" type="button" name="search-button">Search for cities
+          <button id="display-search-slide-btn" class="display-search-slide-btn" type="button" name="search-button">Search for cities
           </button>
         </div>
-          <!-- client gps button -->
-          <section class="client-location-section">
-            <div class="client-location">
-              <button id="client-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt search-gps-icon"></i></button>
+          <!-- gps geolocation button -->
+          <section class="gps-location-section">
+            <div>
+              <button id="gps-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt search-gps-icon"></i></button>
             </div>
           </section>
         </div>
-    <div class="current-weather-div">
-      <img class="weather-icon" src="" alt="weather image icon">
-      <p class="temp"></p>
-      <p class="weather-description"></p>
+    <!-- The data held in the Sidepanel for Current Weather -->
+    <div class="current-weather-data-container">
+      <img class="weather-icon" src="" alt="current weather icon">
+      <p class="current-temperature"></p>
+      <p class="current-weather-description"></p>
       <p class="today-date">Today | <span id="current-date"></span></p>
     </div>
       </div>
-      <div class="sidepanel-1-footer-div">
+      <!-- Sidepanel footer -->
+      <div class="sidepanel-1-footer-container">
         <footer class="sidepanel-1-footer">
           <p class="location"></p>
           <i class="fas fa-map-marker-alt"></i>
@@ -51,7 +54,7 @@
       </div>
     </section>
 
-    <!-- Sidepanel-2 City Search Bar -->
+    <!-- Sidepanel-2 City Search Bar (Hidden by Default) -->
       <section id="city-search-feature" class="sidepanel-2-hidden">
         <form id="searchForm" autocomplete="off" action="/" method="get">
           <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
@@ -65,63 +68,61 @@
 
       </section>
 
-
-  <!-- <section class="sidepanel-search-menu">
-  <form id="search-form" autocomplete="off" action="/" method="get">
-    <div><button type="button" name="exit-btn" class="exit-btn">X</button></div>
-    <div class="search-menu">
-      <label for="search-location" class="search-location"></label>
-      <input id="search-input" type="text" class="search-input" name="search-input" placeholder="search locations...">
-      <button type="submit" name="submit" class="search-submit-btn">Search</button>
-    </div>
-  </form>
-  </section> -->
-
+        <!-- 3 Hour Forecast and Highlights Data Section -->
     <section class="main-forecast-section">
 
+      <!-- Temperature Units Buttons -->
       <div id="degrees-buttons-container">
         <button type="button" name="celsius-button">C</button>
         <button type="button" name="farenheit-button">F</button>
       </div>
 
       <h2 class="three-hour-heading">3 Hour Forecast</h2>
+      <!-- Generate title of Custom City -->
       <h3 class="city-title"></h3>
+
+      <!-- 3 Hour Forecast Section -->
       <section class="three-hour-forecast-section">
 
-        <div class="day1-forecast">
-          <h4 class="forecast-titles-0"></h4>
-          <img class="weather-icon-0" src="" alt="Tomorrow weather icon">
+        <!-- 1/5 time period for 3 Hour Forecast -->
+        <div>
+          <h4 class="forecast-times-0"></h4>
+          <img class="weather-icon-0" src="" alt="weather icon">
           <h4 class="3-hour-weather-description-0"></h4>
           <p class="high-temp-0"></p>
           <p class="min-temp-0"></p>
         </div>
 
-        <div class="day2-forecast">
-          <h4 class="forecast-titles-1"></h4>
+        <!-- 2/5 time period for 3 Hour Forecast -->
+        <div>
+          <h4 class="forecast-times-1"></h4>
           <img class="weather-icon-1" src="" alt="weather icon">
           <h4 class="3-hour-weather-description-1"></h4>
           <p class="high-temp-1"></p>
           <p class="min-temp-1"></p>
         </div>
 
-        <div class="day3-forecast">
-          <h4 class="forecast-titles-2"></h4>
+        <!-- 3/5 time period for 3 Hour Forecast -->
+        <div>
+          <h4 class="forecast-times-2"></h4>
           <img class="weather-icon-2" src="" alt="weather icon">
           <h4 class="3-hour-weather-description-2"></h4>
           <p class="high-temp-2"></p>
           <p class="min-temp-2"></p>
         </div>
 
-        <div class="day4-forecast">
-          <h4 class="forecast-titles-3"></h4>
+        <!-- 4/5 time period for 3 Hour Forecast -->
+        <div>
+          <h4 class="forecast-times-3"></h4>
           <img class="weather-icon-3" src="" alt="weather icon">
           <h4 class="3-hour-weather-description-3"></h4>
           <p class="high-temp-3"></p>
           <p class="min-temp-3"></p>
         </div>
 
-        <div class="day5-forecast">
-          <h4 class="forecast-titles-4"></h4>
+        <!-- 5/5 time period for 3 Hour Forecast -->
+        <div>
+          <h4 class="forecast-times-4"></h4>
           <img class="weather-icon-4" src="" alt="weather icon">
           <h4 class="3-hour-weather-description-4"></h4>
           <p class="high-temp-4"></p>
@@ -130,32 +131,44 @@
 
       </section>
 
+      <!-- Highlights Section Starting Here -->
       <h2 class="highlights-heading">Today's Highlights</h2>
+
       <section class="highlights-section">
+        <!-- First row of highlights 2 divs -->
       <section class="top-row-highlights">
+        <!-- Wind Status -->
         <div>
           <h5>Wind Status</h5>
           <p><span class="wind-speed"></span>mph</p>
         </div>
+        <!-- Humidity -->
         <div>
           <h5>Humidity</h5>
           <p><span class="humidity"></span>%</p>
         </div>
+
       </section>
+
+      <!-- Second row of highlights 2 divs -->
       <section class="btm-row-highlights">
+        <!-- Visibility -->
         <div>
           <h5>Visibility</h5>
           <p><span class="visibility"></span>miles</p>
         </div>
+
+        <!-- Air Pressure -->
         <div>
           <h5>Air Pressure</h5>
           <p><span class="air-pressure"></span>mb</p>
         </div>
       </section>
+      <!-- End of Highlights Section -->
       </section>
-
+    <!-- End of Main Forecast Section -->
     </section>
-
+  <!-- End of All-Body-Content -->
   </section>
 
 </body>
