@@ -1,6 +1,6 @@
 
 //Display search slide
-$("#display-search-slide").on("click", function(){
+$("#display-search-slide-btn").on("click", function(){
   // document.querySelector("button").style.color="red";
   $("#city-search-feature").removeClass("sidepanel-2-hidden").addClass("sidepanel-2-visible");
   $(".sidepanel-1").addClass("sidepanel-1-hidden");
@@ -15,7 +15,7 @@ $(".sidepanel-1").removeClass("sidepanel-1-hidden");
 
 
 //prompt for location from html button
-$("#client-location-btn").on("click", function(){
+$("#gps-location-btn").on("click", function(){
   navigator.geolocation.getCurrentPosition(successfulLookup);
 });
 
@@ -36,10 +36,10 @@ function noCoordsAllowedWeather(){
     $(".weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
-    $(".temp").html(temperature);
+    $(".current-temperature").html(temperature);
     //Appending weather description from API to HTML p tag
     const weatherDescription = data.weather[0].description;
-    $(".weather-description").html(weatherDescription);
+    $(".current-weather-description").html(weatherDescription);
   });
 }
 noCoordsAllowedWeather();
@@ -82,10 +82,10 @@ $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=
   $(".weather-icon").attr("src", weatherIcon);
   //Appending weather temperature from API to HTML p tag
   const temperature = data.main.temp;
-  $(".temp").html(temperature);
+  $(".current-temperature").html(temperature);
   //Appending weather description from API to HTML p tag
   const weatherDescription = data.weather[0].description;
-  $(".weather-description").html(weatherDescription);
+  $(".current-weather-description").html(weatherDescription);
 });
                 //Getting 3 hour custom client search
 $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=0a21ace2e1d4500f00df05b69be0544c", function(data){
@@ -126,10 +126,10 @@ function coordsAllowedWeather({latitude, longitude}){
     $(".weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
-    $(".temp").html(temperature);
+    $(".current-temperature").html(temperature);
     //Appending weather description from API to HTML p tag
     const weatherDescription = data.weather[0].description;
-    $(".weather-description").html(weatherDescription);
+    $(".current-weather-description").html(weatherDescription);
   });
 }
 
@@ -221,7 +221,7 @@ function dayOfWeekAssignments(data) {
           return timeOfDay % 12 + "pm";
         }
       };
-      $(".forecast-titles-" + i).html(hour24convert12);
+      $(".forecast-times-" + i).html(hour24convert12);
   }
 };
 //Assigning  Weather Descriptions for 3 Hour Forecast
