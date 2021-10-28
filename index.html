@@ -8,7 +8,14 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Font Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Oswald:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
   <!-- JQuery Script -->
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -19,31 +26,33 @@
 <body>
 
   <section class="all-body-content">
-<!-- There are 2 sidepanels. The first is default visible, and the second becomes visible onclick of "Search for cities button" -->
-<!-- Sidepanel-1 Current Weather -->
-    <section class="sidepanel-1">
+    <!-- Note: There are 2 sidepanels. The first (sidepanel-1) is default visible, and the second (sidepanel-2) is default hidden. -->
+
+
+    <!-- Sidepanel-1 Current Weather -->
+    <section class="sidepanel-1-section">
       <div>
         <div class="searchCities-gpsBtn-container">
-        <!-- "Search for cities" sidepanel 1 button -->
-        <div>
-          <label for="search-button"></label>
-          <button id="display-search-slide-btn" class="display-search-slide-btn" type="button" name="search-button">Search for cities
-          </button>
-        </div>
+          <!-- "Search for cities" sidepanel-1 button -->
+          <div>
+            <label for="search-button"></label>
+            <button id="open-searchBar-btn" class="open-searchBar-btn" type="button" name="search-button">Search for cities
+            </button>
+          </div>
           <!-- gps geolocation button -->
           <section class="gps-location-section">
             <div>
-              <button id="gps-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt search-gps-icon"></i></button>
+              <button id="gps-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt gps-icon"></i></button>
             </div>
           </section>
         </div>
-    <!-- The data held in the Sidepanel for Current Weather -->
-    <div class="current-weather-data-container">
-      <img class="weather-icon" src="" alt="current weather icon">
-      <p class="current-temperature"></p>
-      <p class="current-weather-description"></p>
-      <p class="today-date">Today | <span id="current-date"></span></p>
-    </div>
+        <!-- The data displayed in the Sidepanel for Current Weather -->
+        <div class="current-weather-data-container">
+          <img class="current-weather-icon" src="" alt="current weather icon">
+          <p class="current-temperature"></p>
+          <p class="current-weather-description"></p>
+          <p class="today-date">Today | <span id="current-date"></span></p>
+        </div>
       </div>
       <!-- Sidepanel footer -->
       <div class="sidepanel-1-footer-container">
@@ -55,20 +64,20 @@
     </section>
 
     <!-- Sidepanel-2 City Search Bar (Hidden by Default) -->
-      <section id="city-search-feature" class="sidepanel-2-hidden">
-        <form id="searchForm" autocomplete="off" action="/" method="get">
-          <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
-          <div class="autocomplete" style="width:300px;">
-            <input id="searchInput" type="text" name="myCity" placeholder= "&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome" />
-          </div>
-      <div class="sidepanel-2-bottom">
-            <button type="submit" name="submit" class="search-submit-btn">Search</button>
-      </div>
-        </form>
+    <section id="city-search-feature" class="sidepanel-2-hidden">
+      <form id="searchForm" autocomplete="off" action="/" method="get">
+        <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
+        <div class="autocomplete" style="width:300px;">
+          <input id="searchInput" type="text" name="myCity" placeholder="&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome" />
+        </div>
+        <div class="sidepanel-2-bottom">
+          <button type="submit" name="submit" class="search-submit-btn">Search</button>
+        </div>
+      </form>
 
-      </section>
+    </section>
 
-        <!-- 3 Hour Forecast and Highlights Data Section -->
+    <!-- 3 Hour Forecast and Highlights Data Section -->
     <section class="main-forecast-section">
 
       <!-- Temperature Units Buttons -->
@@ -136,39 +145,39 @@
 
       <section class="highlights-section">
         <!-- First row of highlights 2 divs -->
-      <section class="top-row-highlights">
-        <!-- Wind Status -->
-        <div>
-          <h5>Wind Status</h5>
-          <p><span class="wind-speed"></span>mph</p>
-        </div>
-        <!-- Humidity -->
-        <div>
-          <h5>Humidity</h5>
-          <p><span class="humidity"></span>%</p>
-        </div>
+        <section class="top-row-highlights">
+          <!-- Wind Status -->
+          <div>
+            <h5>Wind Status</h5>
+            <p><span class="wind-speed"></span>mph</p>
+          </div>
+          <!-- Humidity -->
+          <div>
+            <h5>Humidity</h5>
+            <p><span class="humidity"></span>%</p>
+          </div>
 
-      </section>
+        </section>
 
-      <!-- Second row of highlights 2 divs -->
-      <section class="btm-row-highlights">
-        <!-- Visibility -->
-        <div>
-          <h5>Visibility</h5>
-          <p><span class="visibility"></span>miles</p>
-        </div>
+        <!-- Second row of highlights 2 divs -->
+        <section class="btm-row-highlights">
+          <!-- Visibility -->
+          <div>
+            <h5>Visibility</h5>
+            <p><span class="visibility"></span>miles</p>
+          </div>
 
-        <!-- Air Pressure -->
-        <div>
-          <h5>Air Pressure</h5>
-          <p><span class="air-pressure"></span>mb</p>
-        </div>
+          <!-- Air Pressure -->
+          <div>
+            <h5>Air Pressure</h5>
+            <p><span class="air-pressure"></span>mb</p>
+          </div>
+        </section>
+        <!-- End of Highlights Section -->
       </section>
-      <!-- End of Highlights Section -->
-      </section>
-    <!-- End of Main Forecast Section -->
+      <!-- End of Main Forecast Section -->
     </section>
-  <!-- End of All-Body-Content -->
+    <!-- End of All-Body-Content -->
   </section>
 
 </body>
