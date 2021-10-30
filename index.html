@@ -23,7 +23,7 @@
   <script defer src="scripts.js" charset="utf-8"></script>
 </head>
 
-<body>
+<body id="background-img">
 
   <section class="all-body-content">
     <!-- Note: There are 2 sidepanels. The first (sidepanel-1) is default visible, and the second (sidepanel-2) is default hidden. -->
@@ -31,7 +31,7 @@
 
     <!-- Sidepanel-1 Current Weather -->
     <section class="sidepanel-1-section">
-      <div>
+      <div class="sidepanel-1-body">
         <div class="searchCities-gpsBtn-container">
           <!-- "Search for cities" sidepanel-1 button -->
           <div>
@@ -68,7 +68,7 @@
       <form id="searchForm" autocomplete="off" action="/" method="get">
         <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
         <div class="autocomplete" style="width:300px;">
-          <input id="searchInput" type="text" name="myCity" placeholder="&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome" />
+          <input id="searchInput" type="text" name="myCity" placeholder="&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome"/>
         </div>
         <div class="sidepanel-2-bottom">
           <button type="submit" name="submit" class="search-submit-btn">Search</button>
