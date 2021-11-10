@@ -1,4 +1,16 @@
-
+  //API for header Quotes
+  $.getJSON("https://type.fit/api/quotes", function(data) {
+    //to get a whole number between 0 and 1643
+    const quoteNumber = Math.floor(Math.random() * 1644);
+    //to pull random quote from api object based on array position
+    const quote = data[quoteNumber].text;
+    //to append above quote to p tag in html
+    $(".quote").append("Quote of the day: " + '"' + quote + '"');
+  });
+// farenheit degrees button add event listener
+document.getElementById("celsius-btn").addEventListener("click", function(){
+  alert("Whoops, still working on that.");
+})
 //Default "Current" Weather (Boston, USA) Applied on Page Load
 function defaultCurrentWeatherData() {
   $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=Boston&units=imperial&appid=5a0d3d8c3daeb2bd5ede54a25170773d", function(data) {
@@ -11,7 +23,9 @@ function defaultCurrentWeatherData() {
     $(".current-weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
-    $(".current-temperature").html(temperature);
+    const tempStr = String(temperature);
+    const tempReduced = tempStr.slice(0,2);
+    $(".current-temperature").html(tempReduced + " &#176" + "F");
     //Appending weather description from API to HTML p tag
     const weatherDescription = data.weather[0].description;
     $(".current-weather-description").html(weatherDescription);
@@ -25,6 +39,7 @@ defaultCurrentWeatherData();
 function threeHourForecastDefault() {
   let defaultCity = "Boston";
   $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + defaultCity + "&units=imperial&appid=0a21ace2e1d4500f00df05b69be0544c", function(data) {
+    $(".city-title").html(defaultCity);
 
     weatherIconAssingment(data);
     timeOfDayAssignments(data);
@@ -50,16 +65,9 @@ $(".search-submit-btn").on("click", function(event) {
   citySubmission();
   $("#city-search-feature").addClass("sidepanel-2-hidden").removeClass("sidepanel-2-visible");
   $(".sidepanel-1-section").removeClass("sidepanel-1-hidden");
+  // clearing search field after form submission
+  document.getElementById("searchInput").value="";
 });
-//Add Event Listener for Submitting search with ENTER key
-// document.getElementById("searchInput").on("keydown", function(event) {
-//   if (event.keycode == 13) {
-//   event.preventDefault();
-//   citySubmission();
-//   $("#city-search-feature").addClass("sidepanel-2-hidden").removeClass("sidepanel-2-visible");
-//   $(".sidepanel-1-section").removeClass("sidepanel-1-hidden");
-// }
-// });
 
 //Exit Button for Search Bar
 $(".exit-btn").on("click", function() {
@@ -81,6 +89,9 @@ function citySubmission() {
     //Appending weather temperature to p tag
     const temperature = data.main.temp;
     $(".current-temperature").html(temperature);
+    const tempStr = String(temperature);
+    const tempReduced = tempStr.slice(0,2);
+    $(".current-temperature").html(tempReduced + " &#176" + "F");
     //Appending weather description to p tag
     const weatherDescription = data.weather[0].description;
     $(".current-weather-description").html(weatherDescription);
@@ -96,6 +107,10 @@ function citySubmission() {
       $(".air-pressure").html(airPressure);
       const humidity = data.main.humidity;
       $(".humidity").html(humidity);
+      // Assigning percentage number to humidty meter
+      $(".humidity-meter-text").html(humidity + "%");
+      // Assigning width for humidity bar
+      $("#humidity-meter").css("width", humidity + "%");
       const visibility = data.visibility;
       $(".visibility").html(visibility);
       const windSpeed = data.wind.speed;
@@ -125,13 +140,17 @@ const dateDisplayed = document.getElementById("current-date").innerHTML = curren
 //if User allows coordinate sharing (Current Weather Display)
 function coordsAllowedWeather({latitude,longitude}) {
   $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=5a0d3d8c3daeb2bd5ede54a25170773d", function(data) {
-    console.log("Coords allowed, custom city");
+    console.log("Coords allowed, coordinate city");
     //Appending weather image from API to HTML img src
     const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
     $(".current-weather-icon").attr("src", weatherIcon);
     //Appending weather temperature from API to HTML p tag
     const temperature = data.main.temp;
     $(".current-temperature").html(temperature);
+    //adding degree symbol
+    const tempStr = String(temperature);
+    const tempReduced = tempStr.slice(0,2);
+    $(".current-temperature").html(tempReduced + " &#176" + "F");
     //Appending weather description from API to HTML p tag
     const weatherDescription = data.weather[0].description;
     $(".current-weather-description").html(weatherDescription);
@@ -166,14 +185,21 @@ function highlightsData({latitude, longitude}){
     console.log(latitude);
     console.log(longitude);
     $(".location").html(data.timezone);
+    $(".city-title").html(data.timezone);
     const airPressure = data.current.pressure;
     $(".air-pressure").html(airPressure);
     const humidity = data.current.humidity;
     $(".humidity").html(humidity);
+    // Assigning percentage number to humidty meter
+    $(".humidity-meter-text").html(humidity + "%");
+    // Assigning width for humidity bar
+    $("#humidity-meter").css("width", humidity + "%");
     const visibility = data.current.visibility;
     $(".visibility").html(visibility);
     const windSpeed = data.current.wind_speed;
     $(".wind-speed").html(windSpeed);
+    // Assigning windspeed icon
+    $("#wind-speed-icon").css("display", "inline-block");
   });
 };
 
@@ -200,6 +226,7 @@ function timeOfDayAssignments(data) {
     //yeilds date and time in 24hr format
     const date = data.list[i].dt_txt;
     //converts date variable into 12hour format with am/pm
+    console.log(date);
     const hour24convert12 = function convertTime() {
         //yields two digit time hour (ie: 03, or 12)
         const timeOfDay = date.slice(11, 13);
@@ -237,19 +264,23 @@ function weatherDescriptionThreeHour(data) {
 //Weather High Function (3 Hour Forecast)
 function weatherHigh(data) {
   for (let i = 0; i <= 4; i++) {
-    const degreeC = "&#176" + "C";
-    const degreeF = "&#176" + "F";
+    const degreeC = " &#176" + "C";
+    const degreeF = " &#176" + "F";
     const weatherHigh = data.list[i].main.temp_max;
-    $(".high-temp-" + i).html(weatherHigh + degreeF + " / ");
+    const weatherHighStr = String(weatherHigh);
+    const weatherHighReduced = weatherHighStr.slice(0,2);
+    $(".high-temp-" + i).html(weatherHighReduced + degreeF + " / ");
   }
 };
 //Weather Low Function (3 Hour Forecast)
 function weatherLow(data) {
   for (let i = 0; i <= 4; i++) {
-    const degreeC = "&#176" + "C";
-    const degreeF = "&#176" + "F";
+    const degreeC = " &#176" + "C";
+    const degreeF = " &#176" + "F";
     const weatherLow = data.list[i].main.temp_min;
-    $(".min-temp-" + i).html(weatherLow + degreeF);
+    const weatherLowStr = String(weatherLow);
+    const weatherLowReduced = weatherLowStr.slice(0,2);
+    $(".min-temp-" + i).html(weatherLowReduced + degreeF);
   }
 };
 
@@ -317,7 +348,6 @@ function autocomplete(inp, arr) {
       addActive(x);
     } else if (e.keyCode == 13) {
       /*If the ENTER key is pressed, prevent the form from being submitted,*/
-      e.preventDefault();
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
@@ -364,16 +394,30 @@ const searchForm = document.getElementById("searchForm");
 const searchValue = document.getElementById("searchInput").value.toUpperCase();
 
 //Background Image Assignments
+//assigns a random background image from imgs folder to body element on refresh
 function backgroundImageAssignment(){
-  //create random number from 0-6
-  let randomNumber = Math.floor(Math.random() * 7);
+  //create random number from 0-3
+  let randomNumber = Math.floor(Math.random() * 4);
   //target css element to change image url with randomNumber
     $("body").css("backgroundImage", "url(imgs/background-image-" + randomNumber + ".jpg)");
 };
+
+//Degrees button (Celsius/Farenheit)
+function celsiusClick(){
+  const cDegreeBtn = document.getElementById("celsius-button");
+  cDegreeBtn.on("click", function(){
+    if ($(".location")) {
+
+    }
+  })
+};
+
+
+
 //Add event listener for page load/refresh to call backgroundImageAssignment Function
-window.addEventListener("load", function(){
-  backgroundImageAssignment();
-});
+// window.addEventListener("load", function(){
+//   backgroundImageAssignment();
+// });
 
 
 

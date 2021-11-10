@@ -1,16 +1,15 @@
 /* Global Styling */
 body {
 background-color: rgb(16, 14, 29);
-/* background-image: url(imgs/background-image-2.jpg); */
 background-size: cover;
 font-family: Oswald;
 font-size: 1rem;
 }
 
 button {
-  background-color: dimgray;
+  background-color: rgb(255,236,101, .8);
   border: none;
-  color: white;
+  color: rgb(16, 14, 29);
   font-family: Montserrat, sans-serif !important;
   font-weight: bold;
 }
@@ -25,27 +24,47 @@ color: white;
 padding: 20px;
 text-align: center;
 }
+h1 {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
 h2, h3 {
 color: white;
 font-family: Roboto, sans-serif !important;
 padding-left: 40px;
 text-align: left !important;
 }
+h5 {
+  font-size: 16px;
+}
 img {
   height: 60px;
   width: 60px;
 }
-                /* All Body Content Section */
+/* All Body Content Section */
 .all-body-content {
   display: flex;
 }
 
-               /* ----- Buttons ----- */
+/* ----- Buttons ----- */
+/* Search button in Sidepanel-2 */
+button[type=submit] {
+  background-color:  rgb(255,236,101, .8);
+  color: #000;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
 /* Temperature Units Buttons  */
 #degrees-buttons-container {
   background-color: inherit;
+  display: inline;
+  /* this positioning to align container right */
   padding-top: 0;
-  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 #degrees-buttons-container button {
   border-radius: 100%;
@@ -64,8 +83,14 @@ img {
 }
 /* GPS Location Button */
 #gps-location-btn {
+  background-color: dimgray;
   border-radius: 100%;
+  color: white;
   padding: 10px 15px;
+}
+#gps-location-btn:hover {
+  background-color: white;
+  color: rgb(30, 33, 58);
 }
 .gps-location-section {
   display: block;
@@ -81,14 +106,45 @@ img {
   color: white;
   margin-right: 50px;
 }
+/* Search Weather Submit Button */
+.search-submit-btn:hover {
+  background-color: white;
+  color: rgb(30, 33, 58);
+  cursor: pointer;
+}
 /* Exit Search Field Button */
 .exit-btn-div,
 .exit-btn {
   text-align: right;
 }
 
-
-
+/* Quotes API */
+.quote-container {
+  background-color: white;
+  color:  rgb(30, 33, 58, 1);
+  padding: 5px !important;
+  margin: 5px 0 !important;
+  overflow: hidden;
+  position: relative;
+}
+.quote {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  text-align: center;
+  transform: translateX(100%);
+  animation: scroll 30s linear infinite;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 /* ----- Sidepanel-1 (Current Weather Data) ----- */
 .sidepanel-1-section {
   display: flex;
@@ -115,27 +171,31 @@ img {
   margin: 0 !important;
 }
 .current-weather-description {
+  color: rgb(255,236,101,.8);
   font-size: 1.5rem;
 }
 .location {
   font-size: 1.5rem;
+  margin: 0;
+}
+.today-date {
+  font-size: 1.5rem;
+  padding-top: 10px;
 }
 .sidepanel-1-footer-container {
   height: 100vh;
 }
-/* toggling this selector in JS */
 .sidepanel-1-hidden {
   display: none;
-}
+} /* toggling this selector in JS */
+
 /* ----- End ----- */
 
 
 /* ----- Sidepanel-2 (City Search Field) ----- */
-
-/* toggling this selector in JS */
 .sidepanel-2-hidden {
   display: none;
-}
+} /* toggling this selector in JS */
 .sidepanel-2-visible {
   margin: 0;
 }
@@ -143,13 +203,35 @@ img {
   height: 100vh;
 }
 
-              /* ----- 3 Hour Forecast/Highlights ----- */
+/* ----- 3 Hour Forecast/Highlights ----- */
+.main-forecast-section {
+  position: relative;
+} /* positioned to align degrees container to the right */
 .main-forecast-section div {
-  border-radius: 20px;
   margin: 10px;
+  height: 300px;
+  width: 200px;
 }
-
+.page-heading {
+  padding-bottom: 0;
+}
+.three-hour-forecast-p {
+  color: white;
+  font-size: 20px !important;
+  font-weight: 200;
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+}
 /* 3 Hour Forecast */
+.three-hour-heading {
+  padding-top: 20px;
+}
+.city-title {
+  color: rgb(255,236,101,.8);
+  font-size: 2rem;
+  text-align: center;
+}
 .three-hour-forecast-section {
   background-color: inherit;
   display: flex;
@@ -157,12 +239,19 @@ img {
   justify-content: space-around;
   margin: 20px;
 }
-
+.three-hour-forecast-section h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 10px 0;
+}
 .three-hour-forecast-section div p {
   color: silver;
   display: inline-block;
 }
-
+.three-hour-forecast-section img {
+  height: 80px;
+  width: 80px;
+}
 
 /* Today's Highlights */
 .highlights-section {
@@ -171,13 +260,21 @@ img {
 }
 .highlights-section div {
   padding: 0 20px;
-  width: 300px;
+  height: 100%;
+  width: 400px;
 }
 .highlights-section span {
   font-size: 3rem;
 }
 .highlights-section p {
   font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.highlights-h2 {
+  color: white;
+  font-size: 20px !important;
+  font-weight: 200;
+  margin: 0 0 40px 40px;
 }
 .top-row-highlights,
 .btm-row-highlights {
@@ -185,7 +282,31 @@ img {
   justify-content: space-between;
   margin: 0 30px;
 }
+/* Wind Speed Icon */
+#wind-speed-icon {
+  display: none;
+  font-size: 2rem;
+  margin: 20px 0 20px;
+}
+/* Humidity Meter */
+#humidity-meter-container {
+  background-color: white;
+  padding-left: 0;
+  width: auto;
+}
 
+#humidity-meter {
+  background-color: rgb(255,236,101,1);
+  text-align: center;
+  line-height: 40px;
+  color: rgb(30, 33, 58);
+  padding: 0;
+  margin: 0;
+}
+.humidity-meter-text {
+  font-size: 1rem;
+  padding: 0;
+}
 
 /* All Styling for Autocomplete City Search Bar */
 
@@ -210,14 +331,6 @@ input {
 input[type=text] {
   background-color: white;
   width: 100%;
-}
-
-/* Search button in Sidepanel-2 */
-button[type=submit] {
-  background-color: lightgray;
-  color: #000;
-  cursor: pointer;
-  padding: 10px 20px;
 }
 
 .autocomplete-items {
