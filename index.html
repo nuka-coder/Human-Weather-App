@@ -19,11 +19,19 @@
 
   <!-- JQuery Script -->
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Jquery UI -->
+  <link rel="stylesheet" href="jquery-ui.min.css">
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.min.js"></script>
   <!-- Javascript Script -->
   <script defer src="scripts.js" charset="utf-8"></script>
 </head>
 
 <body id="background-img">
+
+  <div class="quote-container" id="quotes-container">
+  <p class="quote"></p>
+  </div>
 
   <section class="all-body-content">
     <!-- Note: There are 2 sidepanels. The first (sidepanel-1) is default visible, and the second (sidepanel-2) is default hidden. -->
@@ -68,10 +76,11 @@
       <form id="searchForm" autocomplete="off" action="/" method="get">
         <div class="exit-btn-div"><button type="button" name="exit-btn" class="exit-btn">X</button></div>
         <div class="autocomplete" style="width:300px;">
-          <input id="searchInput" type="text" name="myCity" placeholder="&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome"/>
+          <label for="myCity"></label>
+          <input id="searchInput" type="text" name="myCity" placeholder="&#xF002;     Search for your city..." style="font-family:Arial, FontAwesome" required/>
         </div>
         <div class="sidepanel-2-bottom">
-          <button type="submit" name="submit" class="search-submit-btn">Search</button>
+          <button type="submit" name="submit" class="search-submit-btn">Get Weather</button>
         </div>
       </form>
 
@@ -79,15 +88,17 @@
 
     <!-- 3 Hour Forecast and Highlights Data Section -->
     <section class="main-forecast-section">
+      <h1 class="page-heading">Weather for Humans</h1>
+        <p class="three-hour-forecast-p">Get your 3 hour weather forecast and today's highlights.</p>
 
       <!-- Temperature Units Buttons -->
       <div id="degrees-buttons-container">
-        <button type="button" name="celsius-button">C</button>
-        <button type="button" name="farenheit-button">F</button>
+        <button type="button" name="celsius-button" id="celsius-btn">°C</button>
+        <button type="button" name="farenheit-button" id="farenheit-button">°F</button>
       </div>
 
       <h2 class="three-hour-heading">3 Hour Forecast</h2>
-      <!-- Generate title of Custom City -->
+          <!-- Generate title of Custom City -->
       <h3 class="city-title"></h3>
 
       <!-- 3 Hour Forecast Section -->
@@ -142,6 +153,7 @@
 
       <!-- Highlights Section Starting Here -->
       <h2 class="highlights-heading">Today's Highlights</h2>
+      <h5 class="highlights-h2">Search for your city to populate highlights</h5>
 
       <section class="highlights-section">
         <!-- First row of highlights 2 divs -->
@@ -150,11 +162,15 @@
           <div>
             <h5>Wind Status</h5>
             <p><span class="wind-speed"></span>mph</p>
+            <i id="wind-speed-icon" class="fas fa-wind"></i>
           </div>
           <!-- Humidity -->
           <div>
             <h5>Humidity</h5>
-            <p><span class="humidity"></span>%</p>
+            <p class="humidity-p"><span class="humidity"></span>%</p>
+            <div id="humidity-meter-container">
+              <div id="humidity-meter"><p class="humidity-meter-text"></p></div>
+            </div>
           </div>
 
         </section>
