@@ -25,12 +25,12 @@ To retrieve weather from a custom city of your choosing there are two methods:
 
 ![awesome weather app](https://user-images.githubusercontent.com/69128849/142766550-3675d769-3208-4f45-990b-949db9fe9562.jpg)
 
-##### Packages
+### Packages
 ---
 *No packages published*
-##### Contributors
+### Contributors
 ---
 Built and maintained by [__Brittany J__](https://github.com/nuka-coder).
-##### Credits
+### Credits
 ---
 *Initial concept inspired by [devchallenges.io](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) coding challenge*.
