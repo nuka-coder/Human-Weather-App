@@ -11,7 +11,7 @@ A simple weather app for humans (or cyborgs and non-human synths. *some* animals
 * A Love for Weather
 
 ## Getting Started
-To use or preview this weather app visit the Github deployment of *Weather for Humans* [here](https://nuka-coder.github.io/Awesome-Weather-App/).
+To use or preview this weather app visit the Github deployment of *Weather for Humans* [here](https://nuka-coder.github.io/Human-Weather-App/).
 
 #### Use Guide
 This weather app delivers a simple 3 hour forecast and current weather highlights from select cities around the world.
