@@ -30,7 +30,7 @@ To retrieve weather from a custom city of your choosing there are two methods:
 *No packages published*
 ##### Contributors
 ---
-Built and maintained by [__Brittany J.__](https://github.com/nuka-coder).
+Built and maintained by [__Brittany J__](https://github.com/nuka-coder).
 ##### Credits
 ---
 *Initial concept inspired by [devchallenges.io](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) coding challenge*.
