@@ -7,9 +7,9 @@
     //to append above quote to p tag in html
     $(".quote").append("Quote of the day: " + '"' + quote + '"');
   });
-// farenheit degrees button add event listener
+// Farenheit degrees button add event listener
 document.getElementById("celsius-btn").addEventListener("click", function(){
-  alert("Whoops, still working on that.");
+  alert("Still working on that!");
 })
 //Default "Current" Weather (Boston, USA) Applied on Page Load
 function defaultCurrentWeatherData() {
@@ -56,15 +56,21 @@ threeHourForecastDefault();
 
 //Adding Click Event Listener to Display City Search Field
 $("#open-searchBar-btn").on("click", function() {
-  $("#city-search-feature").removeClass("sidepanel-2-hidden").addClass("sidepanel-2-visible");
-  $(".sidepanel-1-section").addClass("sidepanel-1-hidden");
+  $(".sidepanel-2-hidden").slideUp();
+  $(".sidepanel-2-visible").slideDown();
+  $(".sidepanel-1-section").slideUp();
+  $(".sidepanel-2-hidden").slideDown();
 });
 //Adding event Listener for Search Button (for city search input)
 $(".search-submit-btn").on("click", function(event) {
   event.preventDefault();
   citySubmission();
-  $("#city-search-feature").addClass("sidepanel-2-hidden").removeClass("sidepanel-2-visible");
-  $(".sidepanel-1-section").removeClass("sidepanel-1-hidden");
+  $(".sidepanel-2-hidden").slideDown();
+  $(".sidepanel-2-visible").slideUp();
+  $(".sidepanel-1-section").slideDown();
+  $(".sidepanel-2-hidden").slideUp();
+  // $("#city-search-feature").addClass("sidepanel-2-hidden").removeClass("sidepanel-2-visible");
+  // $(".sidepanel-1-section").removeClass("sidepanel-1-hidden");
   // clearing search field after form submission
   document.getElementById("searchInput").value="";
 });

@@ -4,6 +4,7 @@ background-color: rgb(16, 14, 29);
 background-size: cover;
 font-family: Oswald;
 font-size: 1rem;
+overflow-x: hidden;
 }
 
 button {
@@ -37,6 +38,10 @@ text-align: left !important;
 }
 h5 {
   font-size: 16px;
+}
+hr {
+  border: solid 2px dimgray;
+  border-style: double;
 }
 img {
   height: 60px;
@@ -119,13 +124,16 @@ button[type=submit] {
 }
 
 /* Quotes API */
-.quote-container {
+#quote-container {
   background-color: white;
   color:  rgb(30, 33, 58, 1);
-  padding: 5px !important;
+  display: block;
   margin: 5px 0 !important;
   overflow: hidden;
+  padding: 5px !important;
   position: relative;
+  text-align: center;
+  width: 100%;
 }
 .quote {
   font-size: 20px;
@@ -144,6 +152,14 @@ button[type=submit] {
   100% {
     transform: translateX(-100%);
   }
+}
+/* Hidden Title for Mobile */
+#title-div {
+  background-color: inherit;
+  display: none;
+}
+.three-hour-forecast-p-mobile {
+color: rgb(255, 236, 101, .8);
 }
 /* ----- Sidepanel-1 (Current Weather Data) ----- */
 .sidepanel-1-section {
@@ -362,4 +378,60 @@ input[type=text] {
 .autocomplete-active {
   background-color: AliceBlue !important;
   color: #000;
+}
+
+/* ----- Media Queries ----- */
+@media only screen and (max-width: 1160px) {
+.three-hour-forecast-section div {
+  width: 80%;
+}
+.three-hour-forecast-section {
+  justify-content: center;
+}
+/* the highlights section divs only (not the divs within them) */
+.mobile-highlights-padding {
+  padding: 40px !important;
+  width: 100% !important;
+}
+/* remvoing flex so divs will occupy full screen */
+.top-row-highlights,
+.btm-row-highlights {
+  display: block;
+}
+#degrees-buttons-container {
+  display: none;
+}
+
+}
+@media only screen and (max-width: 800px) {
+  .all-body-content {
+    display: block;
+  }
+  #degrees-buttons-container,
+  .page-heading,
+  .three-hour-forecast-p {
+    display: none;
+  }
+  .sidepanel-1-footer-container,
+  .sidepanel-2-bottom {
+    height: 30vh;
+  }
+  #title-div {
+    background-color: rgba(0,0,0,0);
+    display: block;
+  }
+  .mobile-highlights-padding {
+    padding: 40px !important;
+  }
+  .top-row-highlights,
+  .btm-row-highlights {
+    display: block;
+    width: 60%;
+  }
+  .highlights-section {
+    align-items: center;
+  }
+  .autocomplete {
+    width: 100% !important;
+  }
 }

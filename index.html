@@ -28,8 +28,7 @@
 </head>
 
 <body id="background-img">
-
-  <div class="quote-container" id="quotes-container">
+  <div class="quote-container" id="quote-container">
   <p class="quote"></p>
   </div>
 
@@ -53,6 +52,11 @@
               <button id="gps-location-btn" type="button" name="location-btn"><i class="fas fa-map-marker-alt gps-icon"></i></button>
             </div>
           </section>
+        </div>
+        <div class="title-div" id="title-div">
+          <h1 class="page-heading-mobile">Weather for Humans</h1>
+            <p class="three-hour-forecast-p-mobile">Get your 3 hour weather forecast and today's highlights.</p>
+            <hr>
         </div>
         <!-- The data displayed in the Sidepanel for Current Weather -->
         <div class="current-weather-data-container">
@@ -159,13 +163,13 @@
         <!-- First row of highlights 2 divs -->
         <section class="top-row-highlights">
           <!-- Wind Status -->
-          <div>
+          <div class="mobile-highlights-padding">
             <h5>Wind Status</h5>
             <p><span class="wind-speed"></span>mph</p>
             <i id="wind-speed-icon" class="fas fa-wind"></i>
           </div>
           <!-- Humidity -->
-          <div>
+          <div class="mobile-highlights-padding">
             <h5>Humidity</h5>
             <p class="humidity-p"><span class="humidity"></span>%</p>
             <div id="humidity-meter-container">
@@ -178,13 +182,13 @@
         <!-- Second row of highlights 2 divs -->
         <section class="btm-row-highlights">
           <!-- Visibility -->
-          <div>
+          <div class="mobile-highlights-padding">
             <h5>Visibility</h5>
             <p><span class="visibility"></span>miles</p>
           </div>
 
           <!-- Air Pressure -->
-          <div>
+          <div class="mobile-highlights-padding">
             <h5>Air Pressure</h5>
             <p><span class="air-pressure"></span>mb</p>
           </div>
@@ -195,7 +199,7 @@
     </section>
     <!-- End of All-Body-Content -->
   </section>
-
+<h6 style="text-align: center; color: #fff;">Created by Brittany J. © 2021</h6>
 </body>
 
 </html>
