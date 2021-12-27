@@ -405,7 +405,7 @@ function backgroundImageAssignment(){
   //create random number from 0-3
   let randomNumber = Math.floor(Math.random() * 4);
   //target css element to change image url with randomNumber
-    $("body").css("backgroundImage", "url(imgs/background-image-" + randomNumber + ".jpg)");
+    $("body").css("backgroundImage", "url(assets/imgs/background-image-" + randomNumber + ".jpg)");
 };
 
 //Degrees button (Celsius/Farenheit)
