@@ -13,8 +13,8 @@
   "author": "Nuka-Coder",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.13"
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
   },
   "devDependencies": {},
   "repository": {
