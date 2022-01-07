@@ -1,3 +1,9 @@
+//Variables for keys (will env ignore later, these are free so don't waste your time trying to steal them)
+const apiKey1 = "5a0d3d8c3daeb2bd5ede54a25170773d";
+const apiKey2= "0a21ace2e1d4500f00df05b69be0544c"
+const geoKey= "290244149c2047599b1fd37a44996bc2"
+
+
 //API for header Quotes
 $.getJSON("https://type.fit/api/quotes", function(data) {
   //to get a whole number between 0 and 1643
@@ -7,13 +13,15 @@ $.getJSON("https://type.fit/api/quotes", function(data) {
   //to append above quote to p tag in html
   $(".quote").append("Quote of the day: " + '"' + quote + '"');
 });
+
 // Farenheit degrees button add event listener
 document.getElementById("celsius-btn").addEventListener("click", function() {
   alert("Still working on that!");
-})
+});
+
 //Default "Current" Weather (Boston, USA) Applied on Page Load
 function defaultCurrentWeatherData() {
-  $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=Boston&units=imperial&appid=" + APIKEY1, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=Boston&units=imperial&appid=" + apiKey1, function(data) {
     console.log("No location specified. Default city.");
     let defaultCity = "Boston";
     //assigning location details to html element
@@ -38,7 +46,7 @@ defaultCurrentWeatherData();
 //Default 3 Hour forecast
 function threeHourForecastDefault() {
   let defaultCity = "Boston";
-  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + defaultCity + "&units=imperial&appid=" + APIKEY2, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + defaultCity + "&units=imperial&appid=" + apiKey2, function(data) {
     $(".city-title").html(defaultCity);
 
     weatherIconAssingment(data);
@@ -56,19 +64,19 @@ threeHourForecastDefault();
 
 //Adding Click Event Listener to Display City Search Field
 $("#open-searchBar-btn").on("click", function() {
-  $(".sidepanel-2-hidden").slideUp();
-  $(".sidepanel-2-visible").slideDown();
-  $(".sidepanel-1-section").slideUp();
-  $(".sidepanel-2-hidden").slideDown();
+  $(".sidepanel-2-hidden").css("display", "inherit");
+  $(".sidepanel-2-visible").css("display", "inherit");
+  $(".sidepanel-1-section").css("display", "none");
+  $(".sidepanel-2-hidden").css("display", "inherit");
 });
 //Adding event Listener for Search Button (for city search input)
 $(".search-submit-btn").on("click", function(event) {
   event.preventDefault();
   citySubmission();
-  $(".sidepanel-2-hidden").slideDown();
-  $(".sidepanel-2-visible").slideUp();
-  $(".sidepanel-1-section").slideDown();
-  $(".sidepanel-2-hidden").slideUp();
+  $(".sidepanel-2-hidden").css("display", "none");
+  $(".sidepanel-2-visible").css("display", "inherit");
+  $(".sidepanel-1-section").css("display", "inherit");
+  $(".sidepanel-2-hidden").css("display", "none");
   // $("#city-search-feature").addClass("sidepanel-2-hidden").removeClass("sidepanel-2-visible");
   // $(".sidepanel-1-section").removeClass("sidepanel-1-hidden");
   // clearing search field after form submission
@@ -88,7 +96,7 @@ function citySubmission() {
   //retrieving value of search input field
   var city = document.getElementById("searchInput").value.toUpperCase();
   //Getting Current Weather for city input variable
-  $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKEY1, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey1, function(data) {
     //Appending weather icon to img src
     const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
     $(".current-weather-icon").attr("src", weatherIcon);
@@ -103,12 +111,12 @@ function citySubmission() {
     $(".current-weather-description").html(weatherDescription);
   });
   //Getting 3 hour custom city weather data
-  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKEY2, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey2, function(data) {
     $(".location").html(city);
     $(".city-title").html(city);
     console.log("3 Hour forecast, custom searched city.");
     //Getting Highlights data for custom city search
-    $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKEY2, function(data) {
+    $.getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey2, function(data) {
       const airPressure = data.main.pressure;
       $(".air-pressure").html(airPressure);
       const humidity = data.main.humidity;
@@ -148,7 +156,7 @@ function coordsAllowedWeather({
   latitude,
   longitude
 }) {
-  $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + APIKEY1, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + apiKey1, function(data) {
     console.log("Coords allowed, coordinate city");
     //Appending weather image from API to HTML img src
     const weatherIcon = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
@@ -188,7 +196,7 @@ const successfulLookup = function(position) {
     latitude,
     longitude
   } = position.coords;
-  fetch("https://api.opencagedata.com/geocode/v1/json?q={latitude}+{longitude}&key=" + GEOKEY)
+  fetch("https://api.opencagedata.com/geocode/v1/json?q={latitude}+{longitude}&key=" + geoKey)
     .then(res => res.json())
   // .then(data => $(".location").html(data.results[0].components.country));
   weatherLocationAssigment({
@@ -210,7 +218,7 @@ function highlightsData({
   latitude,
   longitude
 }) {
-  $.getJSON("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=daily&appid=" + APIKEY2, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=daily&appid=" + apiKey2, function(data) {
     console.log(latitude);
     console.log(longitude);
     $(".location").html(data.timezone);
@@ -237,7 +245,7 @@ function threeHourForecast({
   latitude,
   longitude
 }) {
-  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + APIKEY2, function(data) {
+  $.getJSON("https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + apiKey2, function(data) {
     weatherIconAssingment(data);
     timeOfDayAssignments(data);
     weatherDescriptionThreeHour(data)
